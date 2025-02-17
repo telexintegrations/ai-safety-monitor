@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import compression from 'compression'
 import unknownEndpoint from './middlewares/unknownEndpoint'
+import { requestLogger } from './middlewares/requestLogger'
 
 // to use env variables
 import './common/env'
@@ -16,6 +17,7 @@ app.disable('x-powered-by')
 app.use(cors())
 app.use(helmet())
 app.use(compression())
+app.use(requestLogger)
 app.use(
   express.urlencoded({
     extended: true,

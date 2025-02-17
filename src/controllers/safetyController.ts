@@ -15,11 +15,24 @@ const getFilterConfig = (settings: TelexSetting[]): FilterConfig => ({
   customPrompt: getSettingValue<string>(settings, 'customPrompt', ''),
   maxMessageLength: getSettingValue<number>(settings, 'maxMessageLength', 1000),
   notifyAdmin: getSettingValue<boolean>(settings, 'notifyAdmin', true),
+  geminiApiKey: getSettingValue<string>(settings, 'geminiApiKey', ''),
 })
 
-const containsBannedWords = (content: string, bannedWords: string[]): boolean => {
+const containsBannedWords = (content: string, bannedWords: string[] | string): boolean => {
+  if (typeof bannedWords === 'string') {
+    bannedWords = bannedWords.split(',')
+  }
+
   const lowerContent = content.toLowerCase()
-  return bannedWords.some((word) => lowerContent.includes(word.toLowerCase()))
+
+  const result = bannedWords.some((word) => {
+    // Use word boundaries to ensure we match whole words only
+    const regex = new RegExp(`\\b${word.toLowerCase()}\\b`)
+    const match = regex.test(lowerContent)
+    return match
+  })
+
+  return result
 }
 
 export const returnWebhookResponse = (res: Response, status: 'success' | 'blocked', reason: string) => {
@@ -50,7 +63,11 @@ export const handleWebhook = async (req: Request, res: Response) => {
     }
 
     if (config.enableAICheck) {
-      const analysis: SafetyAnalysisResult = await AISafetyController.analyzeSafety(message, config.customPrompt)
+      const analysis: SafetyAnalysisResult = await AISafetyController.analyzeSafety(
+        config?.geminiApiKey,
+        message,
+        config.customPrompt,
+      )
       if (!analysis.isSafe || analysis.score < config.minSafetyScore) {
         const action = analysis.score < config.minSafetyScore / 2 ? 'blocked' : 'flagged'
         const reason = analysis.reason || `Safety score too low: ${analysis.score}`

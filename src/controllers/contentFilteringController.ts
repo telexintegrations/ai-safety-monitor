@@ -1,7 +1,10 @@
 import { SafetyAnalysisResult } from '../types'
-import { Filter } from 'bad-words'
+import Filter from 'leo-profanity'
 
-const filter = new Filter()
+// Initialize the filter
+Filter.loadDictionary('en') // Load English dictionary
+// Optionally add custom words
+// Filter.add(['custom', 'words', 'here'])
 
 const sensitivePatterns = [
   /\b\d{16}\b/, // Credit card numbers
@@ -12,7 +15,7 @@ const sensitivePatterns = [
 
 function checkContent(content: string): SafetyAnalysisResult {
   // Check for profanity
-  if (filter.isProfane(content)) {
+  if (Filter.check(content)) {
     return {
       isSafe: false,
       score: 0,

@@ -41,6 +41,7 @@ export interface FilterConfig {
   customPrompt?: string
   maxMessageLength?: number
   notifyAdmin?: boolean
+  geminiApiKey?: string
 }
 
 export interface AdminNotification {
