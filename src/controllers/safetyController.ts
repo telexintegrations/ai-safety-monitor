@@ -45,16 +45,17 @@ export const handleWebhook = async (req: Request, res: Response) => {
     const payload = req.body as TelexWebhookPayload
     const { message, settings } = payload
 
-    console.log('payload', payload)
-
     const config = getFilterConfig(settings)
 
     const preliminaryCheck = ContentFilteringController.checkContent(message)
+
     if (!preliminaryCheck.isSafe) {
       return returnWebhookResponse(res, 'blocked', preliminaryCheck.reason || 'Content blocked by filter')
     }
 
-    if (containsBannedWords(message, config.bannedWords)) {
+    const containsBannedWordsCheck = containsBannedWords(message, config.bannedWords)
+
+    if (containsBannedWordsCheck) {
       return returnWebhookResponse(res, 'blocked', '🚫 Message contains banned words')
     }
 

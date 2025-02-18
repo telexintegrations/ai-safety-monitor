@@ -19,11 +19,11 @@ export const telexGeneratedConfig = {
     },
     target_url: `${url}/webhook`,
     key_features: [
-      'Automatic AI responses to channel messages',
-      'Uses conversation history as context for intelligent responses',
-      "Powered by Google's Gemini AI for natural language understanding",
-      'Maintains context of up to 50 recent messages',
-      'Real-time message processing and response generation',
+      'Real-time detection and filtering of harmful content',
+      "Advanced AI-driven safety analysis using Google's Gemini API",
+      'Customizable thresholds for profanity, spam, and sensitive data',
+      'Context-aware evaluations using conversation data',
+      'Seamless webhook integration for instant moderation feedback',
     ],
     settings: [
       {

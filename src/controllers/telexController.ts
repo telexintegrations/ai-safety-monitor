@@ -3,6 +3,7 @@ import { TelexResponse } from '../types'
 const TELEX_RETURN_URL = process.env.TELEX_RETURN_URL
 const TELEX_CHANNEL_ID = process.env.TELEX_CHANNEL_ID
 
+// TODO: THIS FILE AND IT'S CONTENT ARE NOT CURRENTLY USED, IT CAN BE USED DURING FURTHER IMPROVEMENT TO THIS INTEGRATION. SO TEST CASES DO NOT COVER THIS FILE.
 async function sendResponse(
   channelId: string,
   message: string,
