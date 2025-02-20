@@ -9,6 +9,7 @@ const configSchema = z.object({
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
   TELEX_RETURN_URL: z.string(),
   TELEX_CHANNEL_ID: z.string(),
+  WEBSITE_URL: z.string(),
 })
 
 const validateConfig = (config: Record<string, unknown>) => {

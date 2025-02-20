@@ -84,6 +84,7 @@ AI Safety Monitor is a robust content moderation system that combines multiple l
    NODE_ENV=development
    TELEX_CHANNEL_ID=your_channel_id_here
    TELEX_RETURN_URL=your_return_url_here
+   WEBSITE_URL=your_website_url_here
    ```
 
 ## Configuration

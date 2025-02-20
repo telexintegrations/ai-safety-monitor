@@ -1,4 +1,6 @@
-const url = 'https://5lldpsml-3000.uks1.devtunnels.ms'
+import { envConfig } from '../common/env'
+
+const url = envConfig.WEBSITE_URL
 
 export const telexGeneratedConfig = {
   data: {
