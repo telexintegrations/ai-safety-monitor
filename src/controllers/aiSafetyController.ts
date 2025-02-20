@@ -98,6 +98,7 @@ async function analyzeSafety(apiKey: string, content: string, customPrompt?: str
       }
     }
   } catch (error) {
+    console.log('error occurred', error)
     if (error instanceof Error) {
       return {
         isSafe: false,
