@@ -50,6 +50,10 @@ AI Safety Monitor is a robust content moderation system that combines multiple l
   - Detailed safety analysis results
   - Admin notifications for flagged content
 
+### AI Filter Showcase
+![AI Safety Monitor Filter](./src/assets/images/image-showing-ai-filter-in-action.png)
+*Example of AI Safety Monitor detecting and filtering inappropriate content in real-time*
+
 ## Prerequisites
 
 - Node.js (v14 or higher)
@@ -174,6 +178,10 @@ npm run test-coverage
 # Run tests in debug mode
 npm run debug-test
 ```
+
+### Test Coverage Status
+![Test Coverage Report](./src/assets/images/test-coverage.png)
+*Current test coverage metrics showing extensive testing across all components*
 
 ## Development
 
