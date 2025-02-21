@@ -60,6 +60,13 @@ AI Safety Monitor is a robust content moderation system that combines multiple l
 - npm or yarn
 - Google Gemini API key
 
+### Getting a Google Gemini API key
+1. Visit [Google AI Studio](https://aistudio.google.com/)
+2. Click on the "Create API key" button
+3. Copy the API key and paste it in the telex integration config on the telex app settings page for the ai safety monitor integration
+
+Note: Keep your api key secret and do not share it with anyone.
+
 ## Installation
 
 1. Clone the repository:
