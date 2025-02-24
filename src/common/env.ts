@@ -10,6 +10,7 @@ const configSchema = z.object({
   TELEX_RETURN_URL: z.string(),
   TELEX_CHANNEL_ID: z.string(),
   WEBSITE_URL: z.string(),
+  GEMINI_API_KEY: z.string().optional(),
 })
 
 const validateConfig = (config: Record<string, unknown>) => {

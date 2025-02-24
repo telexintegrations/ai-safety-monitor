@@ -2,6 +2,7 @@ import { Response, Request } from 'express'
 import { FilterConfig, SafetyAnalysisResult, TelexSetting, TelexWebhookPayload } from '../types'
 import { ContentFilteringController } from './contentFilteringController'
 import { AISafetyController } from './aiSafetyController'
+import { envConfig } from '../common/env'
 
 const getSettingValue = <T>(settings: TelexSetting[], label: string, defaultValue: T): T => {
   const setting = settings.find((s) => s.label === label)
@@ -65,7 +66,7 @@ export const handleWebhook = async (req: Request, res: Response) => {
 
     if (config.enableAICheck) {
       const analysis: SafetyAnalysisResult = await AISafetyController.analyzeSafety(
-        config?.geminiApiKey,
+        config?.geminiApiKey || envConfig.GEMINI_API_KEY,
         message,
         config.customPrompt,
       )
