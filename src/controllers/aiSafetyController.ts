@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 import { SafetyAnalysisResult } from '../types'
 
 let genAI: GoogleGenerativeAI | null = null
-const genAIModel = 'gemini-pro'
+const genAIModel = 'gemini-1.5-flash'
 
 async function generateSafetyPrompt(content: string, customPrompt?: string): Promise<string> {
   const basePrompt =
